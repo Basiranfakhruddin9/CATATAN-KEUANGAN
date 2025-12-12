@@ -4,9 +4,5 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 
-// Import AdminLTE
-import 'admin-lte';
-
-// Jika ingin pakai plugin tambahan (opsional)
-// import 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
-// import 'admin-lte/plugins/jquery/jquery.min.js';
+// AdminLTE JavaScript - loaded via script tag in layout if needed
+// AdminLTE CSS is imported in app.css

@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Transaksi')
-@section('breadcrumb', 'Edit Transaksi')
+@section('title', 'Tambah Transaksi')
+@section('breadcrumb', 'Tambah Transaksi')
 
 @section('content')
 <div class="row">
     <div class="col-md-8 mx-auto">
-        <div class="card card-warning card-outline">
+        <div class="card card-success card-outline">
             <div class="card-header">
                 <h3 class="card-title">
-                    <i class="fas fa-edit mr-2"></i>Edit Transaksi
+                    <i class="fas fa-plus-circle mr-2"></i>Tambah Transaksi Baru
                 </h3>
                 <div class="card-tools">
                     <a href="{{ route('transaksi.index') }}" class="btn btn-tool">
@@ -17,9 +17,8 @@
                     </a>
                 </div>
             </div>
-            <form action="{{ route('transaksi.update', $transaksi) }}" method="POST">
+            <form action="{{ route('transaksi.store') }}" method="POST">
                 @csrf
-                @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
                         <label for="tgl_transaksi">
@@ -33,7 +32,7 @@
                                    class="form-control @error('tgl_transaksi') is-invalid @enderror" 
                                    id="tgl_transaksi" 
                                    name="tgl_transaksi" 
-                                   value="{{ old('tgl_transaksi', $transaksi->tgl_transaksi->format('Y-m-d')) }}" 
+                                   value="{{ old('tgl_transaksi', date('Y-m-d')) }}" 
                                    required>
                             @error('tgl_transaksi')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -55,7 +54,7 @@
                                     required>
                                 <option value="">Pilih Kategori</option>
                                 @foreach($kategoris as $kategori)
-                                    <option value="{{ $kategori->id_kategori }}" {{ old('kategori', $transaksi->kategori) == $kategori->id_kategori ? 'selected' : '' }}>
+                                    <option value="{{ $kategori->id_kategori }}" {{ old('kategori') == $kategori->id_kategori ? 'selected' : '' }}>
                                         {{ $kategori->nama_kategori }}
                                     </option>
                                 @endforeach
@@ -64,6 +63,11 @@
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
                         </div>
+                        @if($kategoris->count() == 0)
+                        <small class="form-text text-danger">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>Belum ada kategori. <a href="{{ route('kategori.create') }}">Buat kategori terlebih dahulu</a>
+                        </small>
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -78,7 +82,8 @@
                                    class="form-control @error('keterangan') is-invalid @enderror" 
                                    id="keterangan" 
                                    name="keterangan" 
-                                   value="{{ old('keterangan', $transaksi->keterangan) }}" 
+                                   value="{{ old('keterangan') }}" 
+                                   placeholder="Masukkan keterangan transaksi"
                                    required>
                             @error('keterangan')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -99,10 +104,10 @@
                                     name="jenis_transaksi" 
                                     required>
                                 <option value="">Pilih Jenis</option>
-                                <option value="pemasukan" {{ old('jenis_transaksi', $transaksi->jenis_transaksi) == 'pemasukan' ? 'selected' : '' }}>
+                                <option value="pemasukan" {{ old('jenis_transaksi') == 'pemasukan' ? 'selected' : '' }}>
                                     Pemasukan
                                 </option>
-                                <option value="pengeluaran" {{ old('jenis_transaksi', $transaksi->jenis_transaksi) == 'pengeluaran' ? 'selected' : '' }}>
+                                <option value="pengeluaran" {{ old('jenis_transaksi') == 'pengeluaran' ? 'selected' : '' }}>
                                     Pengeluaran
                                 </option>
                             </select>
@@ -124,19 +129,23 @@
                                    class="form-control @error('nominal') is-invalid @enderror" 
                                    id="nominal" 
                                    name="nominal" 
-                                   value="{{ old('nominal', $transaksi->nominal) }}" 
+                                   value="{{ old('nominal') }}" 
                                    min="0" 
                                    step="0.01" 
+                                   placeholder="0"
                                    required>
                             @error('nominal')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
                         </div>
+                        <small class="form-text text-muted">
+                            <i class="fas fa-info-circle mr-1"></i>Masukkan nominal tanpa tanda titik atau koma (contoh: 100000)
+                        </small>
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-warning">
-                        <i class="fas fa-save mr-2"></i>Update Transaksi
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save mr-2"></i>Simpan Transaksi
                     </button>
                     <a href="{{ route('transaksi.index') }}" class="btn btn-default">
                         <i class="fas fa-times mr-2"></i>Batal
@@ -147,3 +156,4 @@
     </div>
 </div>
 @endsection
+

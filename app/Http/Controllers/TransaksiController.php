@@ -14,7 +14,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::with('kategoriRelation')->get();
+        $transaksis = Transaksi::with('kategori')->get();
         return view('transaksi.index', compact('transaksis'));
     }
 
@@ -56,7 +56,7 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        $transaksi->load('kategoriRelation');
+        $transaksi->load('kategori');
         return view('transaksi.show', compact('transaksi'));
     }
 

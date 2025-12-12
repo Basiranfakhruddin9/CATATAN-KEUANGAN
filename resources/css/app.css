@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Bootstrap CSS (required for AdminLTE) */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 /* Import AdminLTE CSS */
 @import 'admin-lte/dist/css/adminlte.min.css';
 
@@ -379,5 +382,275 @@ body {
   .table {
     background: rgba(30, 41, 59, 0.95);
     color: #e2e8f0;
+  }
+}
+
+/* Additional improvements for clean UI */
+.info-box {
+  display: block;
+  min-height: 90px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 0.25rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.info-box::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.info-box .info-box-icon {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0.25rem;
+  display: block;
+  float: left;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+  font-size: 45px;
+  line-height: 90px;
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+}
+
+.info-box .info-box-content {
+  padding: 10px 10px;
+  margin-left: 90px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-box .info-box-text,
+.info-box .info-box-number {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-box .info-box-text {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.info-box .info-box-number {
+  font-weight: bold;
+  font-size: 18px;
+  color: #495057;
+}
+
+.info-box .progress {
+  background: rgba(0,0,0,0.2);
+  margin: 5px -10px 5px -10px;
+  height: 2px;
+}
+
+.info-box .progress .progress-bar {
+  background: #fff;
+}
+
+.info-box .info-box-icon.bg-success {
+  background-color: #28a745 !important;
+  color: #fff !important;
+}
+
+.info-box .info-box-icon.bg-danger {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+.info-box .info-box-icon.bg-info {
+  background-color: #17a2b8 !important;
+  color: #fff !important;
+}
+
+.info-box .info-box-icon.bg-warning {
+  background-color: #ffc107 !important;
+  color: #1f2d3d !important;
+}
+
+.info-box .info-box-icon.elevation-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !important;
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 1rem 1.25rem;
+}
+
+.card-header .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.main-header .navbar-nav .nav-link {
+  border-radius: 0.25rem;
+  margin: 0 0.25rem;
+}
+
+.main-header .navbar-nav .nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.main-sidebar .nav-link {
+  border-radius: 0.5rem;
+  margin: 2px 0.5rem;
+}
+
+.main-sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.content-wrapper {
+  background-color: #f4f6f9;
+}
+
+.table {
+  background-color: white;
+}
+
+.table thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.badge {
+  padding: 0.35em 0.65em;
+  font-weight: 500;
+}
+
+.badge-lg {
+  font-size: 0.9rem;
+  padding: 0.5em 0.75em;
+}
+
+/* Form improvements */
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+}
+
+.input-group .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+
+.invalid-feedback.d-block {
+  display: block;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+.input-group-prepend .input-group-text,
+.input-group-append .input-group-text {
+  border-right: 0;
+}
+
+.input-group > .form-control:not(:first-child) {
+  border-left: 0;
+}
+
+.input-group > .form-control:not(:last-child) {
+  border-right: 0;
+}
+
+select.form-control {
+  padding-right: 2.5rem;
+}
+
+/* Footer */
+.main-footer {
+  background-color: #fff;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .info-box {
+    margin-bottom: 1rem;
+  }
+  
+  .info-box-number {
+    font-size: 1.2rem;
+  }
+  
+  .card-header .card-title {
+    font-size: 1rem;
   }
 }
